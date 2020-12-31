@@ -30,18 +30,10 @@ func NewGetHealthCheckController(cp *props.ControllerProps) *GetHealthCheckContr
 // @Failure 500 {object} wrapper.APIError
 // @Router /health_check [GET]
 func (g *GetHealthCheckController) GetHealthCheck(
-	c echo.Context, req *GetHealthCheckRequest,
+	_ echo.Context, _ *GetHealthCheckRequest,
 ) (res *GetHealthCheckResponse, err error) {
-	// API Error Usage: github.com/54m/api_gen-example/backend/interfaces/wrapper
-	//
-	// return nil, wrapper.NewAPIError(http.StatusBadRequest)
-	//
-	// return nil, wrapper.NewAPIError(http.StatusBadRequest).SetError(err)
-	//
-	// body := map[string]interface{}{
-	// 	"code": http.StatusBadRequest,
-	// 	"message": "invalid request parameter.",
-	// }
-	// return nil, wrapper.NewAPIError(http.StatusBadRequest, body).SetError(err)
-	panic("require implements.") // FIXME require implements.
+	res = &GetHealthCheckResponse{
+		Status: "ok",
+	}
+	return res, nil
 }
