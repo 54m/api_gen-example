@@ -22,3 +22,14 @@ client_generate:
 
 .PHONY: generate
 generate: server_generate client_generate
+
+.PHONY: server_generate_with_mock
+server_generate_with_mock:
+	cd ./backend && ../bin/server_generator -mock ./interfaces
+
+.PHONY: generate_with_mock
+generate_with_mock: server_generate_with_mock client_generate
+
+.PHONY: run_mock
+run_mock:
+	go run -tags mock backend/interfaces/cmd/mock/main.go -port 8888

@@ -22,3 +22,9 @@ gen
 
 # Other
 bin/
+
+# mock
+mock_jsons/
+mock_routes_gen.go
+mock_bootstrap_gen.go
+backend/interfaces/cmd/mock/main.go
