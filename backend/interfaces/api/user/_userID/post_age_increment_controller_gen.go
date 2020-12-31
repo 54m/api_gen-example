@@ -7,32 +7,32 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// PatchAgeIncrementController ...
-type PatchAgeIncrementController struct {
+// PostAgeIncrementController ...
+type PostAgeIncrementController struct {
 	*props.ControllerProps
 }
 
-// NewPatchAgeIncrementController ...
-func NewPatchAgeIncrementController(cp *props.ControllerProps) *PatchAgeIncrementController {
-	p := &PatchAgeIncrementController{
+// NewPostAgeIncrementController ...
+func NewPostAgeIncrementController(cp *props.ControllerProps) *PostAgeIncrementController {
+	p := &PostAgeIncrementController{
 		ControllerProps: cp,
 	}
 	return p
 }
 
-// PatchAgeIncrement ...
-// @Summary WIP
-// @Description WIP
+// PostAgeIncrement user age increment api controller
+// @Summary UserAgeIncrementAPI
+// @Description user age increment api
 // @Accept json
 // @Produce json
 // @Param userID path string true "user id"
-// @Success 200 {object} PatchAgeIncrementResponse
+// @Success 200 {object} PostAgeIncrementResponse
 // @Failure 400 {object} wrapper.APIError
 // @Failure 500 {object} wrapper.APIError
-// @Router /api/user/{userID}/age_increment [PATCH]
-func (p *PatchAgeIncrementController) PatchAgeIncrement(
-	c echo.Context, req *PatchAgeIncrementRequest,
-) (res *PatchAgeIncrementResponse, err error) {
+// @Router /api/user/{userID}/age_increment [POST]
+func (p *PostAgeIncrementController) PostAgeIncrement(
+	c echo.Context, req *PostAgeIncrementRequest,
+) (res *PostAgeIncrementResponse, err error) {
 	// API Error Usage: github.com/54m/api_gen-example/backend/interfaces/wrapper
 	//
 	// return nil, wrapper.NewAPIError(http.StatusBadRequest)

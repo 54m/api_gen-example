@@ -28,15 +28,15 @@ func NewRoutes(p *props.ControllerProps, router *echo.Group, opts ...io.Writer) 
 	r := &Routes{
 		router: router,
 	}
-	router.PATCH("age_increment", r.PatchAgeIncrement(p))
+	router.POST("age_increment", r.PostAgeIncrement(p))
 	return r
 }
 
-// PatchAgeIncrement ...
-func (r *Routes) PatchAgeIncrement(p *props.ControllerProps) echo.HandlerFunc {
-	i := NewPatchAgeIncrementController(p)
+// PostAgeIncrement ...
+func (r *Routes) PostAgeIncrement(p *props.ControllerProps) echo.HandlerFunc {
+	i := NewPostAgeIncrementController(p)
 	return func(c echo.Context) error {
-		req := new(PatchAgeIncrementRequest)
+		req := new(PostAgeIncrementRequest)
 		if err := c.Bind(req); err != nil {
 			log.Printf("failed to JSON binding(/api/user/{userID}/age_increment): %+v", err)
 			return c.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -44,7 +44,7 @@ func (r *Routes) PatchAgeIncrement(p *props.ControllerProps) echo.HandlerFunc {
 				"message": "invalid request.",
 			})
 		}
-		res, err := i.PatchAgeIncrement(c, req)
+		res, err := i.PostAgeIncrement(c, req)
 		if err != nil {
 			if werr, ok := err.(*wrapper.APIError); ok {
 				log.Printf("%+v", werr)
@@ -60,7 +60,7 @@ func (r *Routes) PatchAgeIncrement(p *props.ControllerProps) echo.HandlerFunc {
 	}
 }
 
-// IPatchAgeIncrementController ...
-type IPatchAgeIncrementController interface {
-	PatchAgeIncrement(c echo.Context, req *PatchAgeIncrementRequest) (res *PatchAgeIncrementResponse, err error)
+// IPostAgeIncrementController ...
+type IPostAgeIncrementController interface {
+	PostAgeIncrement(c echo.Context, req *PostAgeIncrementRequest) (res *PostAgeIncrementResponse, err error)
 }
