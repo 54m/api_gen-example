@@ -5,11 +5,11 @@ import (
 	"github.com/54m/api_gen-example/backend/domain/werror"
 )
 
-type PatchAgeIncrementRequest struct {
+type PostAgeIncrementRequest struct {
 	ID string `json:"userID" param:"userID"`
 }
 
-type PatchAgeIncrementResponse struct {
+type PostAgeIncrementResponse struct {
 	Status   int                   `json:"status"`
 	User     *model.User           `json:"payload,omitempty"`
 	Messages []werror.FailedReason `json:"messages"`
