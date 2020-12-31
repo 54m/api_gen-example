@@ -7,7 +7,7 @@ import (
 
 // GetRequest - user acquisition request
 type GetRequest struct {
-	ID string `json:"userID" param:"userID"`
+	ID string `json:"userID" param:"userID" validate:"required"`
 }
 
 // GetResponse- user acquisition response
@@ -19,10 +19,10 @@ type GetResponse struct {
 
 // PatchRequest - user editing request
 type PatchRequest struct {
-	ID     string       `json:"userID" param:"userID"`
-	Name   string       `json:"name,omitempty"`
-	Age    int          `json:"age,omitempty"`
-	Gender model.Gender `json:"gender,omitempty"`
+	ID     string       `json:"userID" param:"userID" validate:"required"`
+	Name   string       `json:"name,omitempty" validate:"min=5,max=10,excludesall=!()#@{}"`
+	Age    int          `json:"age,omitempty" validate:"gt=0,lte=150"`
+	Gender model.Gender `json:"gender,omitempty" validate:"oneof=1 2 3"`
 }
 
 // PatchResponse - user editing response
@@ -34,7 +34,7 @@ type PatchResponse struct {
 
 // DeleteRequest - user deletion request
 type DeleteRequest struct {
-	ID string `json:"userID" param:"userID"`
+	ID string `json:"userID" param:"userID" validate:"required"`
 }
 
 // DeleteResponse - user deletion response

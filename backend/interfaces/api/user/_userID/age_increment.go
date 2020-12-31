@@ -6,7 +6,7 @@ import (
 )
 
 type PostAgeIncrementRequest struct {
-	ID string `json:"userID" param:"userID"`
+	ID string `json:"userID" param:"userID" validate:"required"`
 }
 
 type PostAgeIncrementResponse struct {

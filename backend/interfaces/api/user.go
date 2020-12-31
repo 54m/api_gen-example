@@ -6,9 +6,9 @@ import (
 
 // PutUserRequest - user creation request
 type PutUserRequest struct {
-	Name   string       `json:"name"`
-	Age    int          `json:"age"`
-	Gender model.Gender `json:"gender"`
+	Name   string       `json:"name" validate:"required,min=3,max=10,excludesall=!()#@{}"`
+	Age    int          `json:"age" validate:"required,gt=0,lte=150"`
+	Gender model.Gender `json:"gender" validate:"required,oneof=1 2 3"`
 }
 
 // PutUserResponse - user creation response
