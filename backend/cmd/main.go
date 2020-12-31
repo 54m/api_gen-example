@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/54m/api_gen-example/backend/interfaces"
+	"github.com/54m/api_gen-example/backend/pkg/validator"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -33,6 +34,7 @@ func initMiddleware() interfaces.MiddlewareList {
 func initEchoSetting(e *echo.Echo) {
 	e.Debug = true
 	e.HideBanner = true
+	e.Validator = validator.NewValidator()
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 }
