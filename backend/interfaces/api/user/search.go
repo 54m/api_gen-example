@@ -7,8 +7,9 @@ import (
 
 // GetSearchRequest - user search request
 type GetSearchRequest struct {
-	Name string `json:"name" query:"name"`
-	Age  int    `json:"age" query:"age"`
+	Name   string       `json:"name" query:"name"`
+	Age    int          `json:"age" query:"age"`
+	Gender model.Gender `json:"gender" query:"gender"`
 }
 
 // GetSearchResponse - user search response
