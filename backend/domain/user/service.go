@@ -49,3 +49,18 @@ func (s *Service) DeleteByID(ctx context.Context, id string) error {
 	}
 	return nil
 }
+
+// AgeIncrement - user age incrementation
+func (s *Service) AgeIncrement(ctx context.Context, id string) (*model.User, error) {
+	user, err := s.Get(ctx, id)
+	if err != nil {
+		return nil, xerrors.Errorf("failed to get: %w", err)
+	}
+
+	user.Age++
+
+	if err := s.Update(ctx, user); err != nil {
+		return nil, xerrors.Errorf("failed to age incrementation: %w", err)
+	}
+	return user, nil
+}
