@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/54m/api_gen-example/backend/interfaces"
-	"github.com/54m/api_gen-example/backend/interfaces/props"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -42,9 +41,13 @@ func main() {
 
 	initEchoSetting(e)
 
-	middlewareList := initMiddleware()
+	var (
+		middlewareList = initMiddleware()
+		repo           = initRepositories()
+		props          = initControllerProps(repo)
+	)
 
-	interfaces.Bootstrap(new(props.ControllerProps), e, middlewareList, os.Stdout)
+	interfaces.Bootstrap(props, e, middlewareList, os.Stdout)
 
 	go func() {
 		// Wait for interrupt signal to gracefully shutdown the server with
