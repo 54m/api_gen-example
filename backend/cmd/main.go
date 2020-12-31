@@ -32,6 +32,7 @@ func initMiddleware() interfaces.MiddlewareList {
 
 func initEchoSetting(e *echo.Echo) {
 	e.Debug = true
+	e.HideBanner = true
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 }
