@@ -11,3 +11,7 @@ bootstrap:
 .PHONY: server_generate
 server_generate:
 	cd ./backend && ../bin/server_generator ./interfaces
+
+.PHONY: client_generate
+client_generate:
+	mkdir -p ./frontend/client_generated && cd ./frontend/client_generated && ../../bin/client_generator ../../backend/interfaces
