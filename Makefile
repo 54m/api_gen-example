@@ -7,3 +7,7 @@ bootstrap:
 		tar xzf server_generator.tar.gz && \
 		tar xzf client_generator.tar.gz && \
 		rm *.tar.gz
+
+.PHONY: server_generate
+server_generate:
+	cd ./backend && ../bin/server_generator ./interfaces
