@@ -15,3 +15,6 @@ server_generate:
 .PHONY: client_generate
 client_generate:
 	mkdir -p ./frontend/client_generated && cd ./frontend/client_generated && ../../bin/client_generator ../../backend/interfaces
+
+.PHONY: generate
+generate: server_generate client_generate
