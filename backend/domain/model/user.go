@@ -12,8 +12,7 @@ type User struct {
 type Gender int
 
 const (
-	_            Gender = iota // ignore first value by assigning to blank identifier
-	GenderMale                 // male
-	GenderFemale               // female
-	GenderCustom               // custom
+	GenderMale   Gender = iota + 1 // male
+	GenderFemale                   // female
+	GenderCustom                   // custom
 )
