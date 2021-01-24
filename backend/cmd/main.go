@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/signal"
 	"time"
 
 	"github.com/54m/api_gen-example/backend/interfaces"
 	"github.com/54m/api_gen-example/backend/pkg/validator"
+	"github.com/54m/echo-routing/output"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -65,13 +65,7 @@ func main() {
 		}
 	}()
 
-	fmt.Println("All routes are...")
-	for _, r := range e.Routes() {
-		if r.Name == "github.com/labstack/echo/v4.glob..func1" {
-			continue
-		}
-		fmt.Printf("%s %s: %s\n", r.Method, r.Path, r.Name)
-	}
+	output.Do(e.Routes())
 
 	if err := e.Start(":8888"); err != nil {
 		panic(err)
