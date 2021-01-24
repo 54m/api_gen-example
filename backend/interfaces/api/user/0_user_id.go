@@ -22,7 +22,7 @@ type PatchRequest struct {
 	ID     string       `json:"userID" param:"userID" validate:"required"`
 	Name   string       `json:"name,omitempty" validate:"min=5,max=10,excludesall=!()#@{}"`
 	Age    int          `json:"age,omitempty" validate:"gt=0,lte=150"`
-	Gender model.Gender `json:"gender,omitempty" validate:"oneof=1 2 3"`
+	Gender model.Gender `json:"gender,omitempty" validate:"oneof=0 1 2 3"`
 }
 
 // PatchResponse - user editing response
