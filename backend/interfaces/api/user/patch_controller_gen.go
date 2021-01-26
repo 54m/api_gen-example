@@ -44,11 +44,6 @@ func (p *PatchController) Patch(
 ) (res *PatchResponse, err error) {
 	var werr *werror.ErrorResponse
 
-	if err = c.Validate(req); err != nil {
-		werr = werror.NewValidationError(err)
-		return nil, wrapper.NewAPIError(werr.Status, werr).SetError(err)
-	}
-
 	ctx := c.Request().Context()
 
 	user := &model.User{

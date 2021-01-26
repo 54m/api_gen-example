@@ -40,11 +40,6 @@ func (g *GetController) Get(
 ) (res *GetResponse, err error) {
 	var werr *werror.ErrorResponse
 
-	if err = c.Validate(req); err != nil {
-		werr = werror.NewValidationError(err)
-		return nil, wrapper.NewAPIError(werr.Status, werr).SetError(err)
-	}
-
 	ctx := c.Request().Context()
 
 	user, err := g.UserService.Get(ctx, req.ID)

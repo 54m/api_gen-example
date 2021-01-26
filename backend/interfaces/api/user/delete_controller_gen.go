@@ -40,11 +40,6 @@ func (d *DeleteController) Delete(
 ) (res *DeleteResponse, err error) {
 	var werr *werror.ErrorResponse
 
-	if err = c.Validate(req); err != nil {
-		werr = werror.NewValidationError(err)
-		return nil, wrapper.NewAPIError(werr.Status, werr).SetError(err)
-	}
-
 	ctx := c.Request().Context()
 
 	if err = d.UserService.DeleteByID(ctx, req.ID); err != nil {
