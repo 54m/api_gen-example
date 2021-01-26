@@ -1,6 +1,9 @@
 package validator
 
-import "github.com/go-playground/validator/v10"
+import (
+	"github.com/54m/api_gen-example/backend/domain/werror"
+	"github.com/go-playground/validator/v10"
+)
 
 // Validator - validator
 type Validator struct {
@@ -14,5 +17,6 @@ func NewValidator() *Validator {
 
 // Validate - validate
 func (v *Validator) Validate(i interface{}) error {
-	return v.validator.Struct(i)
+	err := v.validator.Struct(i)
+	return werror.NewValidationError(err)
 }
