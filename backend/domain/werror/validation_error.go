@@ -15,7 +15,7 @@ func NewValidationError(er error) *ErrorResponse {
 		reasons[i].Message = fmt.Sprintf("%s: %s", err.Field(), err.ActualTag())
 	}
 	return &ErrorResponse{
-		Status:        http.StatusBadRequest,
+		Status:        http.StatusUnprocessableEntity,
 		FailedReasons: reasons,
 		err:           er,
 	}
